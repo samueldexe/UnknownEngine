@@ -4,16 +4,14 @@
 #include <vector>
 #include <memory> 
 
-namespace UnknownEngine {
+namespace UnknownEngine { 
     // User-facing API only
     class InputSystem {
     public:
         InputSystem();
         ~InputSystem();
 
-        void BindAction(const std::string& action, const std::string& keyName);
-        void BindAction(const std::string& action, const std::vector<std::string>& keyNames);
-        bool IsActionPressed(const std::string& action) const;
+        bool isKeyPressed(std::string key);
 
     private:
         struct Impl;

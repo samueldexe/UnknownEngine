@@ -4,6 +4,7 @@
 #include "../input_system/InputSystemPrivate.h"
 #include "../window/Window.h"
 #include <memory> 
+#include <iostream>
 
 namespace UnknownEngine {
 
@@ -13,7 +14,7 @@ namespace UnknownEngine {
 		std::unique_ptr<Window> window;
 
 		void InitializeInternal();
-		void UpdateInternal();
+		void RunInternal();
 		void ShutdownInternal();
 	};
 }

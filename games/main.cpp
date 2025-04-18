@@ -7,7 +7,7 @@ int main() {
 	
 	UnknownEngine::Engine engine; 
 
-	engine.Initialize(); 
+	engine.Run(); 
 
-	return 0; 
+	return 0;  
 }

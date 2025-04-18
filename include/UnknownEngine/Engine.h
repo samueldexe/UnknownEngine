@@ -1,7 +1,7 @@
 
 #pragma once
-#include <memory>
-#include "InputSystem.h"
+#include <memory> 
+#include "InputSystem.h" 
 
 namespace UnknownEngine { 
 
@@ -10,14 +10,12 @@ namespace UnknownEngine {
 		Engine();
 		~Engine();
 
-		void Initialize();
-		void Update();
-		void Shutdown();
+		void Run(); 
 
-		InputSystem& getInputSystem();
+		InputSystem& getInputSystem(); 
 
 	private:
 		struct Impl;
-		std::unique_ptr<Impl> impl; 
+		std::unique_ptr<Impl> impl;  
 	};
 }

@@ -10,13 +10,10 @@ namespace UnknownEngine {
         Impl();
         ~Impl(); 
 
-        void UpdateInternal(GLFWwindow* window);  
-        void BindActionInternal(const std::string& action, const std::string& keyName);
-        void BindActionInternal(const std::string& action, const std::vector<std::string>& keyNames);
-        bool IsActionPressedInternal(const std::string& action) const;
+        void Initialize(GLFWwindow* window);   
+        bool isKeyPressedInternal(std::string key); 
 
-        bool keys[512] = { false };
-        std::unordered_map<std::string, std::vector<int>> actionBindings;
+        GLFWwindow* window;
         std::unordered_map<std::string, int> keyNames; 
     };
 }

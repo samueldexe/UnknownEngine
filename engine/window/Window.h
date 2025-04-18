@@ -11,11 +11,11 @@ namespace UnknownEngine {
         Window(int width, int height, const char* title);
         ~Window();
 
-        void createWindow();
+        void Initialize();
         GLFWwindow* getWindow() const { return window; }
-        bool ShouldClose() { return glfwWindowShouldClose(window) == 1; }
+        bool ShouldClose() { return glfwWindowShouldClose(window) == 1; } 
 
-    private:
+    private: 
         int width, height;
         const char* title;
         GLFWwindow* window;
