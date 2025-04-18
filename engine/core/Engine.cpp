@@ -7,6 +7,8 @@ namespace UnknownEngine {
 	Engine::~Engine() = default; 
 
 	InputSystem& Engine::getInputSystem() { return *impl->inputSystem; }
+	ComponentManager& Engine::getComponentManager() { return *impl->componentManager; }
+	SystemManager& Engine::getSystemManager() { return *impl->systemManager; }
 
 	void Engine::Run() { 
 
@@ -16,7 +18,7 @@ namespace UnknownEngine {
 	}
 
 	void Engine::Impl::InitializeInternal() {
-		window = std::make_unique<Window>(1280, 720, "Test"); 
+		window = std::make_unique<Window>(1280, 720, "Test");  
 		inputSystem = std::make_unique<InputSystem>(); 
 
 		window->Initialize();
@@ -27,7 +29,7 @@ namespace UnknownEngine {
 		while (!window->ShouldClose()) {
 			glfwPollEvents(); 
 
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f); 
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			glfwSwapBuffers(window->getWindow()); 

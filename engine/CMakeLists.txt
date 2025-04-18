@@ -14,8 +14,10 @@ target_include_directories(glad PUBLIC
 # Engine library
 add_library(UnknownEngine STATIC
     core/Engine.cpp
-    input_system/InputSystem.cpp
-    window/Window.cpp
+    core/window/Window.cpp
+    core/ecs/ComponentManager.cpp
+    core/ecs/SystemManager.cpp
+    systems/input_system/InputSystem.cpp
 )
 
 target_include_directories(UnknownEngine PUBLIC

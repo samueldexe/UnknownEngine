@@ -1,9 +1,11 @@
 
 #pragma once
-#include <memory> 
-#include "InputSystem.h" 
 
 namespace UnknownEngine { 
+
+	class InputSystem;
+	class ComponentManager;
+	class SystemManager;
 
 	class Engine {
 	public:
@@ -13,6 +15,8 @@ namespace UnknownEngine {
 		void Run(); 
 
 		InputSystem& getInputSystem(); 
+		ComponentManager& getComponentManager();
+		SystemManager& getSystemManager();
 
 	private:
 		struct Impl;

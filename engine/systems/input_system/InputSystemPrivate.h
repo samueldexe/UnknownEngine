@@ -1,7 +1,7 @@
 
 #pragma once
-#include "../../include/UnknownEngine/InputSystem.h" 
-#include "../window/window.h"
+#include "../../../include/UnknownEngine/InputSystem.h" 
+#include "../../core/window/window.h"
 #include <unordered_map>
 
 namespace UnknownEngine {
