@@ -11,7 +11,7 @@ namespace UnknownEngine {
 		~Impl();
 
 		template<typename T>
-		void RegisterComponentInternal(uint32_t entityID, std::shared_ptr<T> component) {
+		void RegisterComponentInternal(uint32_t entityID, std::shared_ptr<T> component) { 
 			components[typeid(T)][entityID] = component;
 		}
 
