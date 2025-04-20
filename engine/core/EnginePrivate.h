@@ -1,11 +1,11 @@
 
 #pragma once
 #include "../../include/UnknownEngine/Engine.h" 
-#include "../systems/input_system/InputSystemPrivate.h"
-#include "window/Window.h"
+#include "../ecs/system/default_systems/input_system/InputSystemPrivate.h"
+#include "../graphics/window/Window.h"
 
-#include "ecs/ComponentManagerPrivate.h"
-#include "ecs/SystemManagerPrivate.h" 
+#include "../ecs/component/ComponentManagerPrivate.h"
+#include "../ecs/system/SystemManagerPrivate.h"
 
 #include <memory> 
 #include <iostream>

@@ -2,7 +2,7 @@
 #pragma once
 
 namespace UnknownEngine {
-	class Component {
+	struct Component {
 	public:
 		virtual ~Component() = default;
 	};

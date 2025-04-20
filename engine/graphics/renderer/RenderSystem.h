@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "../ecs/System.h"
-#include "../ecs/Component.h" 
+#include "../../ecs/system/System.h
+#include "../../ecs/component/default_components/MeshComponent.h"
 #include "Shader.h"
 
 #include <unordered_map>
@@ -14,12 +14,11 @@ namespace UnknownEngine {
 		RenderSystem();
 		~RenderSystem();
 
-		void Initialize();
 		void Update() override;
 		
 	private:
 		std::unordered_map < uint32_t, std::shared_ptr<Component>>* TransformComponents; 
-		std::unordered_map < uint32_t, std::shared_ptr<Component>>* MeshComponents; 
+		std::unordered_map < uint32_t, std::shared_ptr<MeshComponent>>* MeshComponents;
 
 		std::unordered_map < std::string, std::unique_ptr<Shader>> shaders;
 	}; 

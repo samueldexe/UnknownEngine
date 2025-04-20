@@ -53,8 +53,8 @@ namespace UnknownEngine {
 		}
 
 		//Linking Shaders
-		shaderProgram = glCreateProgram();
-		glAttachShader(shaderProgram, vertexShader);
+		shaderProgram = glCreateProgram(); 
+		glAttachShader(shaderProgram, vertexShader); 
 		glAttachShader(shaderProgram, fragmentShader);
 		glLinkProgram(shaderProgram);
 		//Check for errors
