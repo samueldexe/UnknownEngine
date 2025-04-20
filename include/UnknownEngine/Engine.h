@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include <memory>
+
 namespace UnknownEngine { 
 
 	class InputSystem;

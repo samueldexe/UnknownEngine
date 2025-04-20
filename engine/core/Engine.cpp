@@ -25,11 +25,11 @@ namespace UnknownEngine {
 		inputSystem->impl->Initialize(window->getWindow()); 
 	}
 
-	void Engine::Impl::RunInternal() { 
+	void Engine::Impl::RunInternal() const { 
 		while (!window->ShouldClose()) {
 			glfwPollEvents(); 
 
-				
+			glfwSwapBuffers(window->getWindow());
 		}
 	}
 

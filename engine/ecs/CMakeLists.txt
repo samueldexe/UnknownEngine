@@ -1,0 +1,16 @@
+
+add_library(ecs STATIC
+    component/ComponentManager.cpp
+    component/default_components/MeshComponent.cpp
+    
+    system/SystemManager.cpp
+    system/default_systems/input_system/InputSystem.cpp
+)
+
+target_include_directories(ecs
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/..  # Expose engine/ to access other submodules
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../
+)
+
+target_link_libraries(ecs PRIVATE glad glfw opengl32)

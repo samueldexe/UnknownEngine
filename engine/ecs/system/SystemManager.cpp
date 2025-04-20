@@ -10,13 +10,13 @@ namespace UnknownEngine {
 
 	SystemManager::Impl::~Impl() {}
 
-	SystemManager::Impl::UpdateEngineSystemsInternal() {
+	void SystemManager::Impl::UpdateEngineSystemsInternal() { 
 		for (const auto& EngineSystem : EngineSystems) {
 			EngineSystem->Update();
 		}
 	}
 
-	SystemManager::Impl::UpdateUserSystemsInternal() {
+	void SystemManager::Impl::UpdateUserSystemsInternal() {
 		for (const auto& UserSystem : UserSystems) {
 			UserSystem->Update();
 		}

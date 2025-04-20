@@ -1,11 +1,11 @@
 
 #pragma once
-#include "../../include/UnknownEngine/Engine.h" 
-#include "../ecs/system/default_systems/input_system/InputSystemPrivate.h"
-#include "../graphics/window/Window.h"
+#include "include/UnknownEngine/Engine.h"
+#include "ecs/system/default_systems/input_system/InputSystemPrivate.h"
+#include "graphics/window/Window.h"
 
-#include "../ecs/component/ComponentManagerPrivate.h"
-#include "../ecs/system/SystemManagerPrivate.h"
+#include "ecs/component/ComponentManagerPrivate.h"
+#include "ecs/system/SystemManagerPrivate.h"
 
 #include <memory> 
 #include <iostream>
@@ -20,7 +20,7 @@ namespace UnknownEngine {
 		std::unique_ptr<SystemManager> systemManager;
 
 		void InitializeInternal();
-		void RunInternal();
+		void RunInternal() const;
 		void ShutdownInternal();
 	};
 }

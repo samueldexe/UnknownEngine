@@ -9,7 +9,7 @@ namespace UnknownEngine {
 		std::vector<float> vertices;
 		std::vector<unsigned int> indices;
 
-		//Later both normal and uv coordinates
+		//Later both normal and uv coordinates 
 
 		void LoadFromFile(const std::string& filePath);
 	};

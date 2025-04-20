@@ -2,8 +2,8 @@
 #pragma once
 
 #include "../Component.h"
-#include "../../resources/mesh/Mesh.h"
-#include "../../resources/mesh/MeshManager.h"
+#include "resources/mesh/Mesh.h"
+#include "resources/mesh/MeshManager.h"
 
 #include <string>
 #include <memory>

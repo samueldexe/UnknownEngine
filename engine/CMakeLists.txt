@@ -9,26 +9,23 @@ add_subdirectory(thirdparty/glfw)
 add_library(glad STATIC thirdparty/glad/src/glad.c)
 target_include_directories(glad PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/glad/include
+) 
+
+# Engine Submodules
+add_subdirectory(core)
+add_subdirectory(graphics)
+add_subdirectory(ecs)
+add_subdirectory(resources)
+
+add_library(UnknownEngine INTERFACE)
+
+target_include_directories(UnknownEngine INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include  # For public headers 
 )
 
-# Engine library
-add_library(UnknownEngine STATIC
-    core/Engine.cpp
-    graphics/window/Window.cpp
-    core/ecs/ComponentManager.cpp
-    core/ecs/SystemManager.cpp
-    systems/input_system/InputSystem.cpp
-)
-
-target_include_directories(UnknownEngine PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/../include  # For public headers
-    PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}  # For private headers
-    ${GLFW_INCLUDE_DIRS}
-)
-
-target_link_libraries(UnknownEngine PRIVATE
-    glad
-    glfw
-    opengl32
+target_link_libraries(UnknownEngine INTERFACE
+    core
+    graphics
+    ecs
+    resources
 )
