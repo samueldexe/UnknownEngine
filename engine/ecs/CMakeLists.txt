@@ -2,6 +2,8 @@
 add_library(ecs STATIC
     component/ComponentManager.cpp
     component/default_components/MeshComponent.cpp
+
+    entity/EntityManager.cpp
     
     system/SystemManager.cpp
     system/default_systems/input_system/InputSystem.cpp

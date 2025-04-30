@@ -9,14 +9,14 @@ namespace UnknownEngine {
 
 	class ComponentManager {
 	public:
-		ComponentManager();
-		~ComponentManager();
+		ComponentManager(); 
+		~ComponentManager(); 
 
 		template<typename T>
-		void RegisterComponent(uint32_t entityID, std::shared_ptr<T> component) { impl->RegisterComponentInternal(entityID, component); }
+		void RegisterComponent(uint32_t entityID, std::shared_ptr<T> component);
 
 		template<typename T>
-		std::unordered_map<uint32_t, std::shared_ptr<T>> GetComponents() { return impl->GetComponentsInternal(); }
+		std::unordered_map<uint32_t, std::shared_ptr<T>> GetComponents();
 
 	private:
 		struct Impl;

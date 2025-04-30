@@ -7,6 +7,7 @@ namespace UnknownEngine {
 
 	class InputSystem;
 	class ComponentManager;
+	class EntityManager;
 	class SystemManager;
 
 	class Engine {
@@ -14,10 +15,11 @@ namespace UnknownEngine {
 		Engine();
 		~Engine();
 
-		void Run(); 
+		void Run();  
 
 		InputSystem& getInputSystem(); 
 		ComponentManager& getComponentManager();
+		EntityManager& getEntityManager();
 		SystemManager& getSystemManager();
 
 	private:

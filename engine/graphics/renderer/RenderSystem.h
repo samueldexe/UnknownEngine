@@ -7,11 +7,24 @@
 
 #include <unordered_map>
 #include <memory>
+#include <type_traits>
 
 namespace UnknownEngine {
-	class RenderSystem : System {
+	class RenderSystem : public System {
 	public:
-		RenderSystem();
+
+		template<typename T>
+		RenderSystem(std::unordered_map < uint32_t, std::shared_ptr <T>> components) : TransformComponents(nullptr), MeshComponents(nullptr) {
+			shaders["basic_shader_program"] = std::make_unique<Shader>("shaders/basic_vertex_shader.glsl", "shaders/basic_fragment_shader.glsl");
+
+			if constexpr (std::is_same_v < T, MeshComponent>) {
+				MeshComponents = &components;
+			}
+			else {
+				TransformComponents = &components;
+			}
+		}
+
 		~RenderSystem();
 
 		void Update() override;

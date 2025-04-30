@@ -15,8 +15,13 @@ namespace UnknownEngine {
 		~Impl();
 
 		template<typename T>
-		void RegisterSystemInternal(std::unordered_map < uint32_t, std::shared_ptr<T>> components) {
-			UserSystems.push_back(std::make_shared<T>(components));
+		void RegisterUserSystem(std::function<std::shared_ptr<T>()> factory) {
+			UserSystems.push_back(std::static_pointer_cast<System>(factory()));  
+		}
+
+		template<typename T>
+		void RegisterEngineSystem(std::function<std::shared_ptr<T>()> factory) {
+			EngineSystems.push_back(std::static_pointer_cast<System>(factory()));
 		}
 
 		void UpdateEngineSystemsInternal();

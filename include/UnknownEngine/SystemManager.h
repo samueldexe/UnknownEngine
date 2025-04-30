@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <unordered_map>
+#include <functional>
 
 namespace UnknownEngine {
 	class SystemManager {
@@ -11,10 +12,11 @@ namespace UnknownEngine {
 		~SystemManager();
 
 		template<typename T>
-		void RegisterSystemInternal(std::unordered_map < uint32_t, std::shared_ptr<T>> components) { impl->RegisterSystemInternal(components); }
+		void RegisterUserSystem(std::function<std::shared_ptr<T>()> factory);
 
 	private:
 		struct Impl;
+		friend class Engine;
 		std::unique_ptr<Impl> impl; 
 	};
 }
