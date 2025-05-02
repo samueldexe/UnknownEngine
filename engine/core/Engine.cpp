@@ -26,16 +26,16 @@ namespace UnknownEngine {
 		entityManager = std::make_unique<EntityManager>();
 
 		componentManager = std::make_unique<ComponentManager>(); 
-		componentManager->Initialize(meshManager.get());
-
-		systemManager = std::make_unique<SystemManager>(); 
-		systemManager->Initialize(componentManager.get()); 
+		componentManager->Initialize(meshManager.get()); 
 
 		context.meshManager = meshManager.get();
 	}
 
 	//Function that gets called when you start the engine
 	void Engine::Start() {
+		systemManager = std::make_unique<SystemManager>();
+		systemManager->Initialize(componentManager.get());
+
 		Run();
 		Shutdown();
 	}

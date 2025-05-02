@@ -12,8 +12,8 @@ namespace UnknownEngine {
 			return &meshes[meshName];
 		}
 		else {
-			return &meshes[meshName];
-		}
+			return &meshes[meshName]; 
+		} 
 	}
 
 	void MeshManager::loadMesh(const std::string& meshName, const std::string& fileName) {

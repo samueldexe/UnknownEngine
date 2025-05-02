@@ -4,19 +4,11 @@
 
 #include "glad/glad.h"
 
-#include <string>
+#include "engine/core/Utils.h"
+
 #include <iostream>
-#include <fstream>
-#include <sstream>
 
 namespace UnknownEngine {
-	std::string ReadFromFile(std::string filePath) {
-		std::ifstream file(filePath);
-		std::stringstream buffer;
-		buffer << file.rdbuf();
-		return buffer.str();
-	}
-
 	Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath) {
 		vertexCode = ReadFromFile(vertexPath);
 		fragmentCode = ReadFromFile(fragmentPath);

@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "engine/ecs/component/Component.h"
+#include "Component.h"
 #include "engine/resources/mesh/Mesh.h"
 #include "engine/resources/mesh/MeshManager.h"
 #include "engine/core/EngineContext.h"
@@ -21,7 +21,7 @@ namespace UnknownEngine {
 		unsigned int vao, vbo, ebo; 
 
 		std::string meshName;
-		Mesh* mesh = nullptr; 
+		std::shared_ptr<Mesh> mesh; 
 
 		EngineContext& context; 
 

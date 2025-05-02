@@ -1,6 +1,7 @@
 
 add_library(core STATIC
     Engine.cpp
+    Utils.cpp
 )
 
 target_include_directories(core

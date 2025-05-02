@@ -2,12 +2,13 @@
 #pragma once
 
 #include "engine/resources/mesh/MeshManager.h"
-#include "engine/ecs/component/Component.h"
+#include "include/UnknownEngine/ecs/Component.h"
 
 #include <memory>
 #include <unordered_map>
 #include <typeindex>
 #include <string>
+#include <iostream>
 
 namespace UnknownEngine {
 
@@ -16,11 +17,11 @@ namespace UnknownEngine {
 		ComponentManager();
 		~ComponentManager();
 
-		void Initialize(MeshManager* meshManager);
+		void Initialize(MeshManager* meshManager); 
 
 		template<typename T>
-		void RegisterComponent(uint32_t entityID, std::unique_ptr<T> component) {
-			components[typeid(T)][entityID] = std::move(component);
+		void RegisterComponent(uint32_t entityID, std::shared_ptr<T> component) { 
+			components[typeid(T)][entityID] = component;
 		}
 
 		template<typename T>
@@ -39,9 +40,9 @@ namespace UnknownEngine {
 				}
 			}
 
-			return result;
+			return result; 
 		}
-
+			
 	private:
 		std::unordered_map<std::type_index, std::unordered_map<uint32_t, std::shared_ptr<Component>>> components;
 		MeshManager* meshManager;
