@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "ecs/system/System.h"
-#include "ecs/component/default_components/MeshComponent.h"
+#include "engine/ecs/system/System.h"
+#include "include/UnknownEngine/ecs/MeshComponent.h"
 #include "Shader.h"
 
 #include <unordered_map>

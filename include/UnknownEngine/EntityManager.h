@@ -9,9 +9,8 @@ namespace UnknownEngine {
 		EntityManager(); 
 		~EntityManager();
 
-		int CreateEntity();
+		int CreateEntity(); 
 	private:
-		struct Impl;
-		std::unique_ptr<Impl> impl;
+		uint32_t nextEntityID;
 	};
 }

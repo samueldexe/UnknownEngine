@@ -1,21 +1,26 @@
 
 #pragma once
+
 #include <string>
 #include <vector>
 #include <memory> 
+#include <unordered_map>
+
+#include "GLFW/glfw3.h"
 
 namespace UnknownEngine { 
-    // User-facing API only
+  
     class InputSystem {
     public:
-        InputSystem();
+        InputSystem(GLFWwindow* window);
         ~InputSystem();
 
-        bool isKeyPressed(std::string key);
+        void Initialize(GLFWwindow* window); 
 
-    private:
-        struct Impl;
-        friend class Engine;
-        std::unique_ptr<Impl> impl;
+        bool isKeyPressed(std::string key); 
+
+    private: 
+        GLFWwindow* window; 
+        std::unordered_map<std::string, int> keyNames;
     };
 }

@@ -1,12 +1,13 @@
 
-#include "ComponentManagerPrivate.h"
+#include "include/UnknownEngine/ComponentManager.h"
+#include "include/UnknownEngine/ecs/MeshComponent.h"
 
 namespace UnknownEngine {
-	ComponentManager::ComponentManager() : impl(std::make_unique<Impl>()) {}
+	ComponentManager::ComponentManager() {}
 
 	ComponentManager::~ComponentManager() = default;
 
-	ComponentManager::Impl::Impl() {}
-
-	ComponentManager::Impl::~Impl() {}
+	void ComponentManager::Initialize(MeshManager* meshManager) {
+		this->meshManager = meshManager;
+	}
 }

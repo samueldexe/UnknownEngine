@@ -8,7 +8,8 @@ add_library(graphics STATIC
 target_include_directories(graphics
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/..  # Expose engine/ to access other submodules
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../ #Expore resources/ to files in the include folder
 )
 
-target_link_libraries(graphics PRIVATE glad glfw opengl32)
+target_link_libraries(graphics PUBLIC glad opengl32 glfw)

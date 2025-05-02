@@ -1,11 +1,12 @@
 
-#include "MeshComponent.h"
+#include "include/UnknownEngine/ecs/MeshComponent.h"
 #include "glad/glad.h"
 //#include "thirdparty/glad/include/glad/glad.h"
 
 namespace UnknownEngine {
-	MeshComponent::MeshComponent(const std::string& meshName, const std::unique_ptr<MeshManager>& meshManager) : meshName(meshName) {
-		mesh = meshManager->getMesh(meshName);
+	MeshComponent::MeshComponent(const std::string& meshName, EngineContext& context) : meshName(meshName), context(context) {
+		
+		mesh = context.meshManager->getMesh(meshName); 
 
 		if (mesh) {
 			setupMesh();

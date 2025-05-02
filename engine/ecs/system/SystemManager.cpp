@@ -1,24 +1,32 @@
 
-#include "SystemManagerPrivate.h"
+#include "include/UnknownEngine/SystemManager.h"
 
 namespace UnknownEngine {
-	SystemManager::SystemManager() : impl(std::make_unique<Impl>()) {}
+	SystemManager::SystemManager() {}
 
 	SystemManager::~SystemManager() = default;
 
-	SystemManager::Impl::Impl() {}
+	void SystemManager::Initialize(ComponentManager* componentManager) {
+		this->componentManager = componentManager;
 
-	SystemManager::Impl::~Impl() {}
+		//RegisterEngineSystem<RenderSystem>([&]() {
+			//auto& meshComponents = componentManager.GetComponents<MeshComponent>();
+			//return std::make_shared<RenderSystem>(meshComponents);
+			//});
+	}
 
-	void SystemManager::Impl::UpdateEngineSystemsInternal() { 
+	void SystemManager::UpdateSystems() { 
+		//Upddate engine systems
 		for (const auto& EngineSystem : EngineSystems) {
 			EngineSystem->Update();
 		}
-	}
 
-	void SystemManager::Impl::UpdateUserSystemsInternal() {
+		//Update user definied systems
 		for (const auto& UserSystem : UserSystems) {
 			UserSystem->Update();
 		}
+
+		//Render the screen
+		renderingSystem->Update();
 	}
 }

@@ -1,14 +1,10 @@
 
-#include "InputSystemPrivate.h"
+#include "include/UnknownEngine/InputSystem.h"
 
 namespace UnknownEngine {
-    InputSystem::InputSystem() : impl(std::make_unique<Impl>()) {}
+    InputSystem::InputSystem(GLFWwindow* window) {
+        this->window = window;
 
-    InputSystem::~InputSystem() = default;
-
-    bool InputSystem::isKeyPressed(std::string key) { return impl->isKeyPressedInternal(key); }
-
-    InputSystem::Impl::Impl() {
         keyNames["space"] = GLFW_KEY_SPACE;
         keyNames["w"] = GLFW_KEY_W;
         keyNames["a"] = GLFW_KEY_A;
@@ -17,13 +13,9 @@ namespace UnknownEngine {
         keyNames["escape"] = GLFW_KEY_ESCAPE;
     }
 
-    InputSystem::Impl::~Impl() {}
+    InputSystem::~InputSystem() = default;
 
-    void InputSystem::Impl::Initialize(GLFWwindow* window) {
-        this->window = window;
-    }
-
-    bool InputSystem::Impl::isKeyPressedInternal(std::string key) {
+    bool InputSystem::isKeyPressed(std::string key) { 
         return glfwGetKey(window, keyNames[key]) == GLFW_PRESS;
     }
 }
