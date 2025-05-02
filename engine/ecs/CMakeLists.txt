@@ -16,4 +16,4 @@ target_include_directories(ecs
         ${CMAKE_CURRENT_SOURCE_DIR}/../../ #Expore resources/ to files in the include folder
 )
 
-target_link_libraries(ecs  PUBLIC glad glfw opengl32)
+target_link_libraries(ecs  PUBLIC glad glfw opengl32) 

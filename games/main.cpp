@@ -15,7 +15,7 @@ int main() {
 
 	engine.Initialize();
 
-	int Player = engine.getEntityManager().CreateEntity(); 
+	int Player = engine.getEntityManager().CreateEntity();  
 
 	auto meshComponent = std::make_unique<UnknownEngine::MeshComponent>("tree.obj", engine.getContext());
 	engine.getComponentManager().RegisterComponent(Player, std::move(meshComponent)); 

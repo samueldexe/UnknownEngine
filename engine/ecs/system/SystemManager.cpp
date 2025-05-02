@@ -9,10 +9,10 @@ namespace UnknownEngine {
 	void SystemManager::Initialize(ComponentManager* componentManager) {
 		this->componentManager = componentManager;
 
-		//RegisterEngineSystem<RenderSystem>([&]() {
-			//auto& meshComponents = componentManager.GetComponents<MeshComponent>();
-			//return std::make_shared<RenderSystem>(meshComponents);
-			//});
+		RegisterEngineSystem<RenderSystem>([&]() {
+			auto& meshComponents = componentManager.GetComponents<MeshComponent>();
+			return std::make_shared<RenderSystem>(meshComponents);
+		)};
 	}
 
 	void SystemManager::UpdateSystems() { 

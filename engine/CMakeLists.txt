@@ -11,8 +11,6 @@ target_include_directories(glad PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/glad/include
 ) 
 
-message(STATUS "GLAD include path: ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/glad/include")
-
 # Engine Submodules
 add_subdirectory(core)
 add_subdirectory(graphics) 

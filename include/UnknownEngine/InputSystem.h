@@ -12,7 +12,7 @@ namespace UnknownEngine {
   
     class InputSystem {
     public:
-        InputSystem(GLFWwindow* window);
+        InputSystem();
         ~InputSystem();
 
         void Initialize(GLFWwindow* window); 

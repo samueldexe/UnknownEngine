@@ -20,7 +20,7 @@ namespace UnknownEngine {
 			if constexpr (std::is_same_v < T, MeshComponent>) {
 				MeshComponents = &components;
 			}
-			else {
+			else { 
 				TransformComponents = &components;
 			}
 		}

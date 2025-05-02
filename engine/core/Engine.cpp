@@ -17,18 +17,19 @@ namespace UnknownEngine {
 	//Function that initializes every subsystem
 	void Engine::Initialize() {
 		window = std::make_unique<Window>(1280, 720, "Test");  
-		inputSystem = std::make_unique<InputSystem>(); 
-
 		window->Initialize();
+
+		inputSystem = std::make_unique<InputSystem>(); 
 		inputSystem->Initialize(window->getWindow()); 
 
+		meshManager = std::make_unique<MeshManager>();
 		entityManager = std::make_unique<EntityManager>();
+
 		componentManager = std::make_unique<ComponentManager>(); 
+		componentManager->Initialize(meshManager.get());
 
 		systemManager = std::make_unique<SystemManager>(); 
 		systemManager->Initialize(componentManager.get()); 
-
-		meshManager = std::make_unique<MeshManager>(); 
 
 		context.meshManager = meshManager.get();
 	}
@@ -44,7 +45,7 @@ namespace UnknownEngine {
 		while (!window->ShouldClose()) {
 			glfwPollEvents(); 
 
-			systemManager->UpdateSystems(); 
+			systemManager->UpdateSystems();  
 
 			glfwSwapBuffers(window->getWindow());
 		}
