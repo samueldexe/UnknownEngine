@@ -1,0 +1,9 @@
+
+# Editor settings
+.vscode/
+CMakePresets.json
+
+# Build directory
+build/
+
+
