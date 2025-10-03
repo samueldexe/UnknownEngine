@@ -200,11 +200,8 @@ int main()
         glBindTexture(GL_TEXTURE_2D, texture1);
 
         // Active shader
-        cubeShader.Use();
-        cubeShader.SetVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        cubeShader.SetVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        cubeShader.SetVec3("lightPos", lightPos);
-
+        cubeShader.Use(); 
+ 
         // Projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
         cubeShader.SetMat4("projection", projection);
@@ -217,18 +214,41 @@ int main()
         glm::mat4 model = glm::mat4(1.0f);
         cubeShader.SetMat4("model", model);
 
+        // Light properties
+        glm::vec3 viewLightPos = view * glm::vec4(lightPos, 1.0f);
+        cubeShader.SetVec3("light.position", viewLightPos);
+
+        glm::vec3 lightColor;
+        lightColor.x = static_cast<float>(sin(glfwGetTime() * 2.0));
+        lightColor.y = static_cast<float>(sin(glfwGetTime() * 0.7));
+        lightColor.z = static_cast<float>(sin(glfwGetTime() * 1.3)); 
+        glm::vec3 diffuseColor = lightColor   * glm::vec3(0.5f); 
+        glm::vec3 ambientColor = lightColor * glm::vec3(0.1f); 
+        glm::vec3 specularColor = lightColor * glm::vec3(1.0f);
+        cubeShader.SetVec3("light.ambient", ambientColor);
+        cubeShader.SetVec3("light.diffuse", diffuseColor);
+        cubeShader.SetVec3("light.specular", specularColor);
+
+        // Material properties
+        cubeShader.SetVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+        cubeShader.SetVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+        cubeShader.SetVec3("material.specular", 0.5f, 0.5f, 0.5f); 
+        cubeShader.SetFloat("material.shininess", 32.0f);
+
         // Draw cube
         glBindVertexArray(cubeVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // Same thing for light source
+        // Same thing for light source 
         lightSourceShader.Use();
         lightSourceShader.SetMat4("projection", projection);
         lightSourceShader.SetMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, lightPos);
         model = glm::scale(model, glm::vec3(0.2f));
-        lightSourceShader.SetMat4("model", model);
+        lightSourceShader.SetMat4("model", model); 
+
+        lightSourceShader.SetVec3("lightColor", lightColor);
 
         // Draw lightsource
         glBindVertexArray(lightSourceVAO);
