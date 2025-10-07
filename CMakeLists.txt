@@ -27,8 +27,9 @@ target_link_libraries(UnknownEngine PRIVATE glfw)
 
 # Add assimp
 add_library(assimp STATIC IMPORTED)
-set_target_properties(assimp PROPERTIES IMPORTED_LOCATION thirdparty/assimp/lib/libassimp.a)
+set_target_properties(assimp PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/thirdparty/assimp/lib/libassimp.a)
 target_include_directories(assimp INTERFACE thirdparty/assimp/include)
+target_link_libraries(assimp INTERFACE ${CMAKE_SOURCE_DIR}/thirdparty/assimp/lib/libzlibstatic.a)
 target_link_libraries(UnknownEngine PRIVATE assimp) 
 
 # Add stb_image 
